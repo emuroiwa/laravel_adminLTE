@@ -9,13 +9,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-
+  <!-- CSRF Token -->
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>GM58 Client</title>
 <link rel="stylesheet" href="/css/app.css">
  
 </head>
 <body class="hold-transition sidebar-mini">
-<div class="wrapper">
+<div class="wrapper" id="app">
 
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand bg-white navbar-light border-bottom">
@@ -167,11 +168,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item has-treeview menu-open">
+            <li class="nav-item">
+                <router-link to="/dashboard" class="nav-link">
+                    <i class="nav-icon fa fa-th"></i>
+                    <p>
+                        Dashboard
+                        {{--  <span class="right badge badge-danger">New</span>  --}}
+                    </p>
+                </router-link>
+            </li>              
+          <li class="nav-item has-treeview">
             <a href="#" class="nav-link active">
               <i class="nav-icon fa fa-dashboard"></i>
               <p>
-                Starter Pages
+                Payments
                 <i class="right fa fa-angle-left"></i>
               </p>
             </a>
@@ -179,26 +189,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <li class="nav-item">
                 <a href="#" class="nav-link active">
                   <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Active Page</p>
+                  <p>Make Payment</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Inactive Page</p>
+                  <p>View Payment</p>
                 </a>
               </li>
             </ul>
           </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fa fa-th"></i>
-              <p>
-                Simple Link
-                <span class="right badge badge-danger">New</span>
-              </p>
-            </a>
-          </li>
+      
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -228,6 +230,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- Main content -->
     <div class="content">
+
+        <router-view></router-view>
       {{--  <div class="container-fluid">
         <div class="row">
           <div class="col-lg-6">
