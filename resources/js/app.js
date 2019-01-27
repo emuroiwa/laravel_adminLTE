@@ -15,8 +15,8 @@ Vue.use(VueRouter)
 //Routes 
 
 let routes = [
-  { path: '/dashboard', component: require('./components/Dashboard.vue') },
-  { path: '/payments', component: require('./components/Payments.vue') }
+  { path: '/dashboard', component: require('./components/Dashboard.vue').default },
+  { path: '/payments', component: require('./components/Payments.vue').default }
 ]
 
 // 3. Create the router instance and pass the `routes` option
@@ -48,4 +48,4 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
     router
-});
+}).$mount('#app');

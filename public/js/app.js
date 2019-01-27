@@ -50748,10 +50748,10 @@ Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]); //Routes
 
 var routes = [{
   path: '/dashboard',
-  component: __webpack_require__(/*! ./components/Dashboard.vue */ "./resources/js/components/Dashboard.vue")
+  component: __webpack_require__(/*! ./components/Dashboard.vue */ "./resources/js/components/Dashboard.vue").default
 }, {
   path: '/payments',
-  component: __webpack_require__(/*! ./components/Payments.vue */ "./resources/js/components/Payments.vue")
+  component: __webpack_require__(/*! ./components/Payments.vue */ "./resources/js/components/Payments.vue").default
 }]; // 3. Create the router instance and pass the `routes` option
 // You can pass in additional options here, but let's
 // keep it simple for now.
@@ -50780,7 +50780,7 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 var app = new Vue({
   el: '#app',
   router: router
-});
+}).$mount('#app');
 
 /***/ }),
 
