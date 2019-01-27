@@ -128,7 +128,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <span class="float-right text-muted text-sm">2 days</span>
           </a>
           <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+          <a href="#" class="dropdown-item dropdown-footer" href="{{ route('logout') }}"
+          onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">Logout</a>
         </div>
       </li>
       <li class="nav-item">
@@ -153,10 +155,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          {{--  <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">  --}}
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block">       {{ Auth::user()->name }} </a>
         </div>
       </div>
 
@@ -207,7 +209,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <div class="content-header">
+    {{--  <div class="content-header">  
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
@@ -221,12 +223,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
-    </div>
+    --}}</div>
     <!-- /.content-header -->
 
     <!-- Main content -->
     <div class="content">
-      <div class="container-fluid">
+      {{--  <div class="container-fluid">
         <div class="row">
           <div class="col-lg-6">
             <div class="card">
@@ -286,7 +288,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
         </div>
         <!-- /.row -->
       </div><!-- /.container-fluid -->
-    </div>
+    --}}
+    </div>  
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
@@ -308,7 +311,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       Anything you want
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2014-2018 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2014-2018 <a href="gm58.co.za">GM58 PTY LTD</a>.</strong> All rights reserved.
   </footer>
 </div>
 <!-- ./wrapper -->
