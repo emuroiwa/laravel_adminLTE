@@ -141,7 +141,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
     </ul>
   </nav>
   <!-- /.navbar -->
-
+  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        @csrf
+    </form>
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
@@ -170,7 +172,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                with font-awesome or any other icon font library -->
             <li class="nav-item">
                 <router-link to="/dashboard" class="nav-link">
-                    <i class="nav-icon fa fa-th"></i>
+                    <i class="nav-icon fas fa-tachometer-alt blue"></i>
                     <p>
                         Dashboard
                         {{--  <span class="right badge badge-danger">New</span>  --}}
@@ -179,7 +181,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </li>              
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fa fa-dashboard"></i>
+              <i class="nav-icon fas fa-dollar-sign blue"></i>
               <p>
                 Payments
                 <i class="right fa fa-angle-left"></i>
@@ -188,13 +190,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="#" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
+                  <i class="nav-icon fas fa-money-bill-alt blue"></i>
                   <p>Make Payment</p>
                 </a>
               </li>
               <li class="nav-item">
                 <router-link to="/payments" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
+                  <i class="nav-icon fas fa-money-check-alt blue"></i>
                   <p>View Payment</p>
                 </outer-link>
               </li>
