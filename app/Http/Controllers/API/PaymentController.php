@@ -5,6 +5,8 @@ namespace App\Http\Controllers\API;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Payment;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class PaymentController extends Controller
 {
@@ -16,6 +18,14 @@ class PaymentController extends Controller
     public function index()
     {
         //
+        // $payments = DB::table('payments')
+        //              ->select(DB::raw('*'))
+        //              ->where('id', '=',Auth::user()->id)
+        //              ->get();
+        $payments = Payment::where('id', '<>',3)
+                     ->get();             
+        return $payments;
+        //return Payment::latest()->paginate(10);
     }
 
     /**

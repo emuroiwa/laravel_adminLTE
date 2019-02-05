@@ -8,12 +8,26 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
-import VueRouter from 'vue-router'
+import { Form, HasError, AlertError } from 'vform';
+import VueRouter from 'vue-router';
+import VueProgressBar from 'vue-progressbar';
+import swal from 'sweetalert';
 
+
+window.Form = Form;
+window.swal = swal;
+Vue.component(HasError.name, HasError)
+Vue.component(AlertError.name, AlertError)
+ 
 Vue.use(VueRouter)
 
 //Routes 
 
+Vue.use(VueProgressBar, {
+  color: 'rgb(143, 255, 199)',
+  failedColor: 'red',
+  height: '3px'
+})
 let routes = [
   { path: '/dashboard', component: require('./components/Dashboard.vue').default },
   { path: '/payments', component: require('./components/Payments.vue').default }

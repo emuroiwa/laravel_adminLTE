@@ -23,25 +23,25 @@
                   </tr>
 
 
-                  <!-- <tr v-for="user in users.data" :key="user.id">
+                   <tr v-for="payment in payments" :key="payment.id">
 
-                    <td>{{user.id}}</td>
-                    <td>{{user.name}}</td>
-                    <td>{{user.email}}</td>
-                    <td>{{user.type | upText}}</td>
-                    <td>{{user.created_at | myDate}}</td>
+                    <td>{{payment.id}}</td>
+                    <td>{{payment.description}}</td>
+                    <td>{{payment.currency}}</td>
+                    <td>{{payment.payment_type }}</td>
+                    <td>{{payment.amount}}</td>
 
                     <td>
-                        <a href="#" @click="editModal(user)">
+                        <a href="#" @click="editModal(payment)">
                             <i class="fa fa-edit blue"></i>
                         </a>
                         /
-                        <a href="#" @click="deleteUser(user.id)">
+                        <a href="#" @click="deleteUser(payment.id)">
                             <i class="fa fa-trash red"></i>
                         </a>
 
                     </td>
-                  </tr> -->
+                  </tr> 
                 </tbody></table>
               </div>
                <!-- Modal -->
@@ -86,10 +86,10 @@
                     </div>
                 </div>
             </div>
-              <!-- /.card-body -->
+              <!-- /.card-body
               <div class="card-footer">
-                  <pagination :data="users" @pagination-change-page="getResults"></pagination>
-              </div>
+                  <pagination :data="payments" @pagination-change-page="getResults"></pagination>
+              </div> -->
             </div>
             <!-- /.card -->
           </div>
@@ -100,6 +100,7 @@
     export default {
         data(){
             return{
+                payments:{},
                 form: new Form({
                     amount :'',
                     currency:'',
@@ -108,17 +109,30 @@
             }
         },
         methods:{
+            loadPayments(){
+                axios.get("api/payment").then(({ data }) => (this.payments = data));
+            },
              newModal(){
                 this.form.reset();
                 $('#addNew').modal('show');
             },
+             closeModal(){
+                this.form.reset();
+                $('#addNew').modal('hide');
+            },
             createPayment(){
                 // Submit the form via a POST request
+                this.$Progress.start()
                 this.form.post('api/payment')
-                    .then(({ data }) => { console.log(data) })
+                    .then(({ data }) => {  })
+                this.loadPayments();
+                this.$Progress.finish()
+                swal("Good job!", "Payment Processed", "success");
+                this.closeModal();
             }
         },
         mounted() {
+            this.loadPayments();
             console.log('Component mounted.')
         }
     }
